@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import {onMounted, reactive, ref, watch} from 'vue';
 
-const ROUND_LENGTH_SECONDS = 20
+const ROUND_LENGTH_SECONDS = 5
 const timeLeftSeconds = ref(ROUND_LENGTH_SECONDS)
 const started = ref(false)
 const ROWS = 3
 const COLS = 3
 const moles = ref(generateNoMolesArray())
 const score = ref(0)
-const highScores = ref<number[]>([])
+const highScores = ref<number[]>(JSON.parse(localStorage.getItem('highScores') || '[]'))
 const MAX_HIGH_SCORES = 5
 const isAudioMuted = ref(true)
 
@@ -67,6 +67,7 @@ function insertScoreIntoHighScores() {
   }
   highScores.value.splice(i, 0, score.value)
   highScores.value = highScores.value.slice(0, MAX_HIGH_SCORES)
+  localStorage.setItem('highScores', JSON.stringify(highScores.value))
 }
 
 let moleTimeoutId: number
@@ -168,9 +169,5 @@ function flipAudio() {
       </a>
     </div>
   </div>
-
-
-
-
 </template>
 
