@@ -1,5 +1,6 @@
 # whack-a-mole
 A whack-a-mole game with a timer, sound and high score tracker
+https://jacobcons.github.io/whack-a-mole/
 
 ## Project Setup
 
