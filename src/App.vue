@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onMounted, reactive, ref, watch} from 'vue';
 
-const ROUND_LENGTH_SECONDS = 5
+const ROUND_LENGTH_SECONDS = 15
 const timeLeftSeconds = ref(ROUND_LENGTH_SECONDS)
 const started = ref(false)
 const ROWS = 3
