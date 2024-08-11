@@ -17,9 +17,9 @@ jobs:
         with:
           node-version: 20
 
-      - uses: npm i
+      - run: npm i
 
-      - uses: npm run build
+      - run: npm run build
 
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
