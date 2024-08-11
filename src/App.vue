@@ -88,13 +88,17 @@ function getRandomInt(max: number, min = 0) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function moleBg(mole: boolean) {
-  return mole ? '/mole.webp' : '/empty.webp';
+function assetPath(relativePath: string): string {
+  return `${import.meta.env.BASE_URL}${relativePath}`
 }
 
-const bonkAudio = new Audio('/bonk.m4a')
+function moleBg(mole: boolean) {
+  return mole ? assetPath('mole.webp') : assetPath('empty.webp');
+}
+
+const bonkAudio = new Audio(assetPath('bonk.m4a'))
 bonkAudio.volume = 0
-const buzzAudio = new Audio('/buzz.m4a')
+const buzzAudio = new Audio(assetPath('buzz.m4a'))
 buzzAudio.volume = 0
 function handleMoleClick(mole: boolean, row: number, col: number) {
   if (started.value) {
@@ -113,7 +117,7 @@ function handleMoleClick(mole: boolean, row: number, col: number) {
 
 let marioAudio: HTMLAudioElement
 onMounted(() => {
-  marioAudio = new Audio('/mario.m4a')
+  marioAudio = new Audio(assetPath('mario.m4a'))
   marioAudio.loop = true
 })
 
